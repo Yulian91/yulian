@@ -1,0 +1,1024 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 01-12-2022 a las 14:14:29
+-- Versión del servidor: 10.5.13-MariaDB-cll-lve
+-- Versión de PHP: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `u538024323_sgme_hys`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `area`
+--
+
+CREATE TABLE `area` (
+  `id_area` int(11) NOT NULL,
+  `nombre_area` varchar(45) NOT NULL,
+  `estatus_area` varchar(30) NOT NULL DEFAULT 'ACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `area`
+--
+
+INSERT INTO `area` (`id_area`, `nombre_area`, `estatus_area`) VALUES
+(1, 'RAYOS X', 'ACTIVO'),
+(2, 'MAMOGRAFIA', 'ACTIVO'),
+(4, 'CIRUGIA', 'ACTIVO'),
+(5, 'ODONTOLOGIA', 'ACTIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ciudad`
+--
+
+CREATE TABLE `ciudad` (
+  `id_ciudad` int(11) NOT NULL,
+  `nombre_ciudad` varchar(45) NOT NULL,
+  `estatus_ciudad` varchar(30) NOT NULL DEFAULT 'ACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ciudad`
+--
+
+INSERT INTO `ciudad` (`id_ciudad`, `nombre_ciudad`, `estatus_ciudad`) VALUES
+(1, 'BOGOTA, D.C', 'ACTIVO'),
+(2, 'NEIRA', 'ACTIVO'),
+(3, 'CHIQUINQUIRÁ', 'ACTIVO'),
+(4, 'MANIZALES', 'ACTIVO'),
+(5, 'SAN ALBERTO ', 'ACTIVO'),
+(6, 'VILLANUEVA-CASANARE', 'ACTIVO'),
+(7, 'MONTERREY-CASANARE', 'ACTIVO'),
+(8, 'TAURAMENA- CASANARE', 'ACTIVO'),
+(9, 'PAZ DE ARIPORO-CASANARE', 'ACTIVO'),
+(10, 'SOACHA', 'ACTIVO'),
+(11, 'TUQUERRES', 'ACTIVO'),
+(12, 'GUATAVITA', 'ACTIVO'),
+(13, 'VILLETA', 'ACTIVO'),
+(14, 'ZARZAL', 'ACTIVO'),
+(15, 'AGUA DE DIOS', 'ACTIVO'),
+(16, 'IBAGUE', 'ACTIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `id_cliente` int(11) NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT current_timestamp(),
+  `nombre_rz` varchar(50) NOT NULL,
+  `nit_cliente` varchar(45) NOT NULL,
+  `telefono_cliente` varchar(50) NOT NULL,
+  `tipo_contrato` varchar(45) NOT NULL,
+  `num_contrato` varchar(45) NOT NULL,
+  `direccion_ciudad` varchar(45) NOT NULL,
+  `email_cliente` varchar(45) NOT NULL,
+  `nombre_contacto` varchar(45) NOT NULL,
+  `estatus_cliente` varchar(30) NOT NULL DEFAULT 'ACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `fecha_reg`, `nombre_rz`, `nit_cliente`, `telefono_cliente`, `tipo_contrato`, `num_contrato`, `direccion_ciudad`, `email_cliente`, `nombre_contacto`, `estatus_cliente`) VALUES
+(1, '2022-01-22 15:17:18', 'DIAGNOSTICA IPS SAS', '900271266', '601 2362680 / 316 3966481', 'ALQUILER / MATTO', '001', 'CALLE 115 # 55B-38 ILARCO, BOGOTA D.C', 'GERENCIA@DIAGNOSTICA.CO', 'ALEJANDRA OCHOA', 'ACTIVO'),
+(2, '2022-01-23 12:07:33', 'ARMEDICA S.A.S', '900959232', 'NA', 'NA', 'NA', 'Cali', 'info@armedica.co', 'JAVIER GÓMEZ', 'ACTIVO'),
+(3, '2022-01-23 12:10:41', 'IDESNED S.A.S', '9006397923', 'NA', 'NA', 'NA', 'Valledupar', 'NA', 'JOSE DAVID NIÑO', 'ACTIVO'),
+(4, '2022-01-23 12:11:57', 'IPS SAN AGUSTIN ', '9005648129', '3204958783', 'CONTRATO ARRIENDO', '05', 'Monterrey, Casanare', 'NA', 'MONICA SEGURA', 'ACTIVO'),
+(5, '2022-01-23 12:13:07', 'HOSPITAL DEPARTAMENTAL SAN JOSE DE NEIRA', '890801562-4', '8587182', 'NA', 'NA', 'Neira, Caldas', 'rayosx.hospitalneira@gmail.com', 'MATEO SERNA', 'ACTIVO'),
+(6, '2022-01-23 12:14:41', 'GB GESTION BIOMEDICA SAS', '901062680-2', '3132285696', 'NA', 'NA', 'Bogotá, D.C', 'gbgestionbiomedica@gmail.com', 'MARIA EUGENIA MONTERO', 'ACTIVO'),
+(7, '2022-01-23 12:15:47', 'RAYOS X DEL HUILA SAS', '9003555855', 'NA', 'NA', 'NA', 'Pitalito, Huila', 'contactenos@rayosxdelhuila.com.co', 'DANIEL SÁNCHEZ', 'ACTIVO'),
+(8, '2022-01-23 12:19:56', 'SERVINHEALTH S.A.S', '9005566706', 'NA', 'NA', 'NA', 'Villanueva, Casanare', 'servinhealth@gmail.com', 'LUZ EVELIA VARGAS', 'ACTIVO'),
+(9, '2022-01-23 12:21:57', 'SERVICIOS MEDICOS DEL CASANARE SERVIMEDICAS LTDA', '832000532-5', '6247712', 'NA', 'NA', 'Tauramena, Casanare', 'servimedicas@hotmail.com', 'YACQUELINE RAPIRA', 'ACTIVO'),
+(10, '2022-03-07 22:38:48', 'CLINICA OSPEDALE MANIZALES', '810003245-1', '8879100', 'ARRENDO', '7032022', 'CL 51#24-50', 'rayxogerencia@hotmail.com', 'LUIS FERNANDO ANTIA', 'ACTIVO'),
+(11, '2022-05-25 01:13:29', 'IPS POLICLICO CER', '901058247-0', '3178529034', 'NA', 'NA', 'CARRERA 13 #23-04 TUQUERRES NAR', 'NA', 'VIVIANA PORTILLA', 'ACTIVO'),
+(12, '2022-09-23 02:12:13', 'PLENISALUD IPS', '901241821-2', '3015943635', 'NA', 'NA', 'CHIQUINQUIRA', 'NA', 'JORGE A. DIAZ H.', 'ACTIVO'),
+(13, '2022-09-24 21:55:21', 'UNIDAD MEDICA CENTRAL', '812004754-1', '3107821831', 'NA', 'NA', 'VILLETA', 'leidy.lozano@umcentralips.com', 'LEIDY LOZANO', 'ACTIVO'),
+(14, '2022-10-20 22:26:34', 'HOSPITAL DEPARTAMENTAL SAN RAFAEL ESE DE ZARZAL', '891900441-1', '2220043', 'NA', 'NA', 'CL 5 6-32 B/SAN RAFAEL', 'NA', 'FERNANDO ANTIA', 'ACTIVO'),
+(15, '2022-11-28 23:40:33', 'EPS SANITAS', '800251440-6', '6466060', 'PRESTACION DE SERVICIOS', '2022NOV', 'BOGOTA', 'camilo.gonzalez@mizarhealth.co', 'CAMILO GOMEZ', 'ACTIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cronograma`
+--
+
+CREATE TABLE `cronograma` (
+  `id` int(11) NOT NULL,
+  `inventario` int(11) NOT NULL,
+  `titulo` varchar(45) NOT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_final` datetime NOT NULL,
+  `color` varchar(30) DEFAULT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `estatus` varchar(30) NOT NULL DEFAULT 'PENDIENTE'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cronograma`
+--
+
+INSERT INTO `cronograma` (`id`, `inventario`, `titulo`, `fecha_inicio`, `fecha_final`, `color`, `descripcion`, `estatus`) VALUES
+(1, 3, 'MATTO PREVENTIVO', '2022-02-07 08:00:00', '2022-02-07 12:00:00', '#000000', 'MANTENIMIENTO PROGRAMADO', 'PROCESO'),
+(2, 4, 'MTO PROGRAMADO', '2022-02-10 16:00:00', '2022-02-10 17:00:00', '#ffffff', 'AJUSTAR CALIBRACION', 'FINALIZADO'),
+(3, 5, 'MTO PROGRAMADO', '2022-02-08 08:00:00', '2022-02-08 12:00:00', '#fdf7f7', 'CALIBRAR COMPRESIÓN Y AUTOMATICO ', 'FINALIZADO'),
+(4, 6, 'MTO PROGRAMADO', '2022-02-08 12:00:00', '2022-02-08 15:00:00', '#d6d6d6', 'HACER AJUSTES DE PARÁMETROS', 'FINALIZADO'),
+(5, 7, 'MTO PROGRAMADO', '2022-02-08 12:10:00', '2022-02-08 13:10:00', '#000000', 'AJUSTES', 'FINALIZADO'),
+(6, 9, 'ALQUILER', '2022-02-18 08:00:00', '2022-02-18 09:00:00', '#000000', 'ALQUILER POR CONTINGENCIA HOPITAL SANTACLARA', 'FINALIZADO'),
+(7, 9, 'ALQUILER', '2022-03-02 12:00:00', '2022-03-02 12:50:00', '#000000', 'DESISTALACION DE CR', 'FINALIZADO'),
+(8, 3, 'correctivo', '2022-02-07 12:00:00', '2022-03-05 17:46:00', '#000000', 'SE DIAGNOSTICA DAÑO EN EL TUBO DE RX', 'FINALIZADO'),
+(9, 10, 'ALQUILER', '2022-03-08 14:00:00', '2022-03-08 18:00:00', '#000000', 'ENTREGA E INSTALACION', 'FINALIZADO'),
+(10, 11, 'MTO PROGRAMADO', '2022-03-04 08:00:00', '2022-03-04 11:00:00', '#000000', 'Mantenimiento preventivo programado', 'FINALIZADO'),
+(11, 12, 'MTO PROGRAMADO', '2022-03-15 14:00:00', '2022-03-15 16:00:00', '#000000', 'Ajustar freno y cambio cable', 'CANCELADO'),
+(12, 12, 'MTO PROGRAMADO', '2022-03-14 08:00:00', '2022-03-14 11:01:00', '#000000', 'Cambio de reelevo', 'FINALIZADO'),
+(13, 13, 'MTO PROGRAMADO', '2022-03-14 14:00:00', '2022-03-14 16:00:00', '#000000', 'Verificar colimador ', 'FINALIZADO'),
+(14, 14, 'ALQUILER', '2022-03-16 10:00:00', '2022-03-16 13:00:00', '#000000', 'TRASLADO DE EQUIPO E INSTALACION ', 'FINALIZADO'),
+(15, 15, 'MANTENIMIENTO CORRECTIVO', '2022-03-11 12:00:00', '2022-03-11 15:00:00', '#000000', 'ERROR 6 Y 13', 'FINALIZADO'),
+(16, 6, 'DIAGNOSTICO', '2022-03-01 08:00:00', '2022-03-01 12:00:00', '#000000', 'EUIPO FALLA EN TECNICAS ALTAS', 'FINALIZADO'),
+(17, 12, 'MTO PROGRAMADO', '2022-03-14 15:00:00', '2022-03-14 16:00:00', '#000000', 'CAMBIAR PERILLA DE FRENO', 'FINALIZADO'),
+(18, 12, 'MTO PROGRAMADO', '2022-03-14 13:00:00', '2022-03-14 15:00:00', '#000000', 'REVISAR FRENO', 'FINALIZADO'),
+(19, 16, 'MANTENIMIENTO CORRECTIVO', '2022-03-04 14:00:00', '2022-03-04 13:00:00', '#000000', 'COTIZACION', 'FINALIZADO'),
+(20, 17, 'MANTENIMIENTO', '2022-03-28 15:00:00', '2022-03-28 17:00:00', '#000000', 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(21, 18, 'CORRECTIVO', '2022-03-26 18:00:00', '2022-03-26 18:30:00', '#000000', 'CAMBIO DE CODIGOS A CASSETTES', 'FINALIZADO'),
+(22, 19, 'MTO PROGRAMADO', '2022-04-09 08:00:00', '2022-04-09 10:00:00', '#000000', 'MANTENIMIENTO PREVENTIVO', 'CANCELADO'),
+(23, 22, 'MTO PROGRAMADO', '2022-04-09 12:00:00', '2022-04-09 14:00:00', '#000000', 'MANTENIMIENTO PREVENTIVO', 'FINALIZADO'),
+(24, 20, 'MANTENIMIENTO', '2022-04-09 17:00:00', '2022-04-09 19:00:00', '#000000', 'PREVENTIVO', 'FINALIZADO'),
+(25, 21, 'MANTENIMIENTO', '2022-04-10 11:00:00', '2022-04-10 13:00:00', '#000000', 'PREVENTIVO', 'FINALIZADO'),
+(26, 21, 'MANTENIMIENTO', '2022-04-10 14:00:00', '2022-04-10 16:00:00', '#000000', 'PREVENTIVO', 'CANCELADO'),
+(27, 23, 'MANTENIMIENTO', '2022-04-10 08:00:00', '2022-04-10 12:00:00', '#000000', 'PREVENTIVO', 'FINALIZADO'),
+(28, 24, 'MANTENIMIENTO', '2022-04-11 08:00:00', '2022-04-11 12:00:00', '#000000', 'PREVENTIVO', 'FINALIZADO'),
+(29, 1, 'PREVENTIVO', '2022-04-12 14:00:00', '2022-04-12 18:00:00', '#000000', 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(30, 2, 'PREVENTIVO', '2022-04-12 09:00:00', '2022-04-12 10:00:00', '#000000', 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(31, 25, 'CORRECTIVO', '2022-04-19 08:00:00', '2022-04-19 09:00:00', '#000000', 'AJUSTE DETIEMPO', 'FINALIZADO'),
+(32, 26, 'CORRECTIVO', '2022-04-19 10:00:00', '2022-04-19 11:00:00', '#000000', 'AJUSTE TIEMPO', 'FINALIZADO'),
+(33, 8, 'MANTENIMIENTO CORRECTIVO', '2022-05-01 08:00:00', '2022-05-01 12:00:00', '#000000', 'correctivo', 'FINALIZADO'),
+(34, 3, 'MTO PROGRAMADO', '2022-05-07 15:00:00', '2022-05-07 18:00:00', '#000000', 'NA', 'FINALIZADO'),
+(35, 4, 'MTO PROGRAMADO', '2022-05-07 09:00:00', '2022-05-07 12:00:00', '#000000', 'NA', 'FINALIZADO'),
+(36, 27, 'MANTENIMIENTO CORRECTIVO', '2022-05-20 08:00:00', '2022-05-20 11:00:00', '#000000', 'AJUSTE DE TIEMPO', 'FINALIZADO'),
+(37, 6, 'MANTENIMIENTO CORRECTIVO', '2022-05-05 08:00:00', '2022-05-14 12:00:00', '#000000', 'RETIRO DE EQUIPO', 'FINALIZADO'),
+(38, 3, 'MANTENIMIENTO CORRECTIVO', '2022-05-18 15:00:00', '2022-05-18 16:00:00', '#000000', 'fallo de luz colimador', 'FINALIZADO'),
+(39, 7, 'MANTENIMIENTO CORRECTIVO', '2022-06-08 09:00:00', '2022-06-08 18:00:00', NULL, 'DESCONFIGURACION DE SISTEMA', 'FINALIZADO'),
+(40, 5, 'MANTENIMIENTO CORRECTIVO', '2022-05-31 15:00:00', '2022-05-08 15:00:00', NULL, 'DAÑO CONTROLES', 'FINALIZADO'),
+(41, 8, 'MTO PROGRAMADO', '2022-06-03 08:00:00', '2022-06-03 14:00:00', NULL, 'MANTENIMIENTO AGENDADO', 'FINALIZADO'),
+(42, 28, 'MANTENIMIENTO CORRECTIVO', '2022-06-16 11:00:00', '2022-06-16 12:30:00', NULL, 'NO LEE CHASIS', 'FINALIZADO'),
+(43, 2, 'MANTENIMIENTO CORRECTIVO', '2022-07-05 11:00:00', '2022-07-05 17:00:00', NULL, 'FALLA EN IMAGEN', 'FINALIZADO'),
+(44, 1, 'PREVENTIVO', '2022-07-06 09:00:00', '2022-07-06 12:00:00', NULL, 'MANTENIMIENTOPROGRAMADO', 'FINALIZADO'),
+(45, 3, 'MTO PROGRAMADO', '2022-08-04 08:00:00', '2022-08-04 12:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(46, 4, 'MTO PROGRAMADO', '2022-08-04 08:00:00', '2022-08-04 12:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(47, 18, 'MANTENIMIENTO CORRECTIVO', '2022-06-27 02:00:00', '2022-06-27 06:00:00', NULL, 'CALIBRACION', 'FINALIZADO'),
+(48, 3, 'MANTENIMIENTO CORRECTIVO', '2022-09-08 10:00:00', '2022-09-08 12:00:00', NULL, 'error 8', 'FINALIZADO'),
+(49, 2, 'MANTENIMIENTO CORRECTIVO', '2022-09-08 18:00:00', '2022-09-08 19:00:00', NULL, 'ERROR DE DIGITALIZACION', 'FINALIZADO'),
+(50, 29, 'CORRECTIVO', '2022-09-09 12:00:00', '2022-09-19 17:00:00', NULL, 'NO HAY EMISION DE RX', 'PENDIENTE'),
+(51, 29, 'CORRECTIVO', '2022-09-09 12:00:00', '2022-09-19 17:00:00', NULL, 'NO HAY EMISION DE RX', 'FINALIZADO'),
+(52, 30, 'PREVENTIVO', '2022-06-25 14:00:00', '2022-06-25 18:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(53, 31, 'PREVENTIVO', '2022-09-25 14:00:00', '2022-09-25 17:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(54, 32, 'CORRECTIVO', '2022-08-19 08:00:00', '2022-08-30 08:00:00', NULL, 'DAÑO POR SOBRETENSION', 'FINALIZADO'),
+(55, 3, 'CORRECTIVO', '2022-09-30 18:00:00', '2022-09-30 18:30:00', NULL, 'NO ENCIENDE COLIMADOR', 'PROCESO'),
+(56, 33, 'MANTENIMIENTO', '2022-10-20 08:00:00', '2022-10-20 12:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'PENDIENTE'),
+(57, 2, 'MANTENIMIENTO PROGRAMDA', '2022-10-24 08:00:00', '2022-10-24 12:00:00', NULL, 'MANTENIMIENTO PREVENTIVO', 'FINALIZADO'),
+(58, 1, 'MANTENIMIENTO PREVENTIVO', '2022-10-25 08:00:00', '2022-10-25 12:00:00', NULL, 'MANTENIMIENTO PROGRAMAD0', 'PENDIENTE'),
+(59, 8, 'MANTENIMIENTO PREVENTIVO', '2022-10-25 14:00:00', '2022-10-25 16:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'PENDIENTE'),
+(60, 19, 'MANTENIMIENTO PROGRAMADO', '2022-11-04 10:00:00', '2022-11-04 16:00:00', NULL, '', 'PENDIENTE'),
+(61, 23, 'MANTENIMIENTO PROGRAMADO', '2022-11-05 10:00:00', '2022-11-05 17:00:00', NULL, '', 'PENDIENTE'),
+(62, 20, 'DESISTALAR', '2022-11-05 16:00:00', '2022-11-05 17:00:00', NULL, 'DESISTALACION', 'PROCESO'),
+(63, 3, 'MANTENIMIENTO PREVENTIVO', '2022-11-08 15:00:00', '2022-11-08 16:00:00', NULL, 'MANTENIMIENTO PROGRAMDO', 'PENDIENTE'),
+(64, 4, 'MANTENIMIENTO PREVENTIVO', '2022-11-08 09:00:00', '2022-11-08 12:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(65, 34, 'PREVENTIVO', '2022-11-10 12:00:00', '2022-11-10 17:00:00', NULL, 'MANTENIMIENTO PROGRAMADO', 'FINALIZADO'),
+(66, 35, 'CORRECTIVO', '2022-11-23 10:04:00', '2022-11-23 11:00:00', NULL, 'CAMBIO DE CONECTOR', 'PENDIENTE'),
+(67, 36, 'CORRECTIVO', '2022-11-24 12:00:00', '2022-11-24 13:00:00', NULL, 'RETIRO DE REGILLA', 'PENDIENTE');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalle_reporte`
+--
+
+CREATE TABLE `detalle_reporte` (
+  `id_detalle` int(11) NOT NULL,
+  `reporte` int(11) NOT NULL,
+  `nombre_cli` varchar(45) NOT NULL,
+  `identificacion_cli` varchar(45) NOT NULL,
+  `firma_cli` varchar(45) NOT NULL DEFAULT 'NA',
+  `calificacion_servicio` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_reporte`
+--
+
+INSERT INTO `detalle_reporte` (`id_detalle`, `reporte`, `nombre_cli`, `identificacion_cli`, `firma_cli`, `calificacion_servicio`) VALUES
+(1, 1, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '629ec2128f346-firma_aleja_ochoa.png', ''),
+(2, 2, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '629ec50abce16-firma_aleja_ochoa.png', ''),
+(3, 3, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '629ec5d772b8a-firma_aleja_ochoa.png', ''),
+(4, 4, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '629ec6c14e39b-firma_aleja_ochoa.png', ''),
+(5, 5, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a12fd59c954-firma_aleja_ochoa.png', ''),
+(6, 6, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a12ff54f149-firma_aleja_ochoa.png', ''),
+(7, 7, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a1388f6fa7e-firma_aleja_ochoa.png', ''),
+(8, 8, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a138bfd5446-firma_aleja_ochoa.png', ''),
+(9, 9, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a138d8c928a-firma_aleja_ochoa.png', ''),
+(10, 10, 'JOSE DAVID NIÑO', 'NA', '62a14014eefe7-firma_default.png', ''),
+(11, 11, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a140536835e-firma_aleja_ochoa.png', ''),
+(12, 12, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a1406e2b6eb-firma_aleja_ochoa.png', ''),
+(13, 13, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a1408a78d42-firma_aleja_ochoa.png', ''),
+(14, 14, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a140a679805-firma_aleja_ochoa.png', ''),
+(15, 15, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a140bc6f6bb-firma_aleja_ochoa.png', ''),
+(16, 16, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a140eaac5b9-firma_aleja_ochoa.png', ''),
+(17, 17, 'LUZ EVELIA VARGAS', '33646868', '62a14135ae21f-luz_vargas.png', ''),
+(18, 18, 'LUZ EVELIA VARGAS', '33646868', '62a14161e16d3-luz_vargas.png', ''),
+(19, 19, 'LUZ EVELIA VARGAS', '33646868', '62a1417617369-luz_vargas.png', ''),
+(20, 20, 'LUZ EVELIA VARGAS', '33646868', '62a1419356149-luz_vargas.png', ''),
+(21, 21, 'LUZ EVELIA VARGAS', '33646868', '62a141ab44642-luz_vargas.png', ''),
+(22, 22, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a141fed844e-firma_aleja_ochoa.png', ''),
+(23, 23, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a14214ca34f-firma_aleja_ochoa.png', ''),
+(24, 24, 'MARIA EUGENIA MONTERO', '901062680-2', '62a1429fccb83-firma_default.png', ''),
+(25, 25, 'MARIA EUGENIA MONTERO', '901062680-2', '62a142e21aec4-firma_default.png', ''),
+(26, 26, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a1431820557-firma_aleja_ochoa.png', ''),
+(27, 27, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a1432fc409d-firma_aleja_ochoa.png', ''),
+(28, 28, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a143830c69c-firma_aleja_ochoa.png', ''),
+(29, 29, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a143b0a5b12-firma_aleja_ochoa.png', ''),
+(30, 30, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a143c57ccc8-firma_aleja_ochoa.png', ''),
+(31, 31, 'LUIS FERNANDO ANTIA', '1093212147', '62a143fd277a7-firma_default.png', ''),
+(32, 32, ' MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a144150b39c-firma_aleja_ochoa.png', ''),
+(33, 36, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a14c268b1be-firma_aleja_ochoa.png', ''),
+(34, 34, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62a14dfeca294-firma_aleja_ochoa.png', ''),
+(35, 35, 'VIVIANA CAROLINA PORTILLA', '1087422827', '62a14e678ab41-firma_default.png', ''),
+(36, 37, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62ac932002b54-firma_aleja_ochoa.png', ''),
+(37, 38, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62ac933b588b4-firma_aleja_ochoa.png', ''),
+(38, 39, 'MARIA EUGENIA MONTERO', '52965905', '62ac99434b143-firma_default.png', ''),
+(39, 40, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62ce0d63cf60e-firma_aleja_ochoa.png', ''),
+(40, 41, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '62d9f86feac8e-firma_aleja_ochoa.png', ''),
+(41, 44, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '630abc09461c4-firma_aleja_ochoa.png', ''),
+(42, 45, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '631b7a9e0862a-firma_aleja_ochoa.png', ''),
+(43, 46, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '631b7c486bf92-firma_aleja_ochoa.png', ''),
+(44, 42, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '6321ff3e02e4e-firma_aleja_ochoa.png', ''),
+(45, 43, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '6321ff8518e3b-firma_aleja_ochoa.png', ''),
+(46, 47, 'JORGE ARMANDO DIAZ HERNANDEZ', '1104068388', '632d1af5e9955-firma_default.png', ''),
+(47, 48, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '6331c2f91b7b3-firma_aleja_ochoa.png', ''),
+(48, 49, 'DRA. LEIDY LOZANO QUINTERO', '', '63335b8506d8d-firma_default.png', ''),
+(49, 50, 'DRA. LEIDY LOZANO QUINTERO', '', '63336b43ddd80-firma_default.png', ''),
+(50, 51, 'MARIA ALEJANDRA OCHOA SALAMANCA', '1019132020', '633f251124fae-firma_aleja_ochoa.png', ''),
+(51, 52, '', '', '6351cfd2dd967-firma_default.png', ''),
+(52, 53, 'ALEJANDRA OCHOA', '1019132020', '635741365feb0-firma_aleja_ochoa.png', ''),
+(53, 54, 'PAOLA ANDREA UYABAN', '1018498576', '63585e57bafa7-1018498576paola.png', ''),
+(54, 55, 'PAOLA ANDREA UYABAN', '1018498576', '63585f59276f9-1018498576paola.png', ''),
+(55, 56, 'LUZ EVELIA VARGAS', '33646868', '636aac1a25aed-luz_vargas.png', ''),
+(56, 57, 'LUZ EVELIA VARGAS', '33646868', '636aadf64c484-luz_vargas.png', ''),
+(57, 58, 'LUZ EVELIA VARGAS', '33646868', '636bd4e106549-33646868luz_vargas.png', ''),
+(58, 59, 'PAOLA ANDREA UYABAN', '1018498576', '636bdf7d5f1a2-1018498576paola.png', ''),
+(59, 60, 'PAOLA ANDREA UYABAN', '1018498576', '636bdf93562d1-1018498576paola.png', ''),
+(60, 61, 'MARIA EUGENIA MONTERO', '', '63782affc833a-firma_default.png', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `equipo`
+--
+
+CREATE TABLE `equipo` (
+  `id_equipo` int(11) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `no_activo` varchar(45) NOT NULL,
+  `marca` varchar(45) NOT NULL,
+  `modelo` varchar(45) NOT NULL,
+  `serie` varchar(45) NOT NULL,
+  `estado` varchar(45) NOT NULL,
+  `garantia` varchar(45) NOT NULL,
+  `propio_tercero` varchar(30) NOT NULL,
+  `estatus_eq` varchar(30) NOT NULL DEFAULT 'STOCK'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `equipo`
+--
+
+INSERT INTO `equipo` (`id_equipo`, `nombre`, `no_activo`, `marca`, `modelo`, `serie`, `estado`, `garantia`, `propio_tercero`, `estatus_eq`) VALUES
+(1, 'MAMOGRAFO', '001', 'SIEMENS', 'MAMOMAT 1000', '112712', 'BUENO', 'N/A', 'PROPIO', 'EN CONTRATO A/M'),
+(2, 'RX FIJO', '002', 'SEDECAL', 'RPXR-501B', '907100', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(3, 'RX PORTATIL', '003', 'SIEMENS', 'POLIMOBIL PLUS', '53205', 'BUENO', 'N/A', 'PROPIO', 'EN CONTRATO A/M'),
+(4, 'RX PORTATIL', '004', 'SIEMENS', 'POLIMOBIL PLUS', '53258', 'BUENO', 'N/A', 'PROPIO', 'EN CONTRATO A/M'),
+(5, 'DIGITALIZADOR', '005', 'CARESTREAM', 'VITA FLEX', '30616364', 'BUENO', 'N/A', 'PROPIO', 'EN CONTRATO A/M'),
+(6, 'DIGITALIZADOR', '006', 'CARESTREAM', 'CALSSIC', 'NR', 'BUENO', 'N/A', 'PROPIO', 'EN CONTRATO A/M'),
+(7, 'DIGITALIZADOR', '007', 'FUJI', 'FCR XL2', '26510065', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(8, 'DIGITALIZADOR', '008', 'CARESTREAM', 'VITA CR', 'NR', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(9, 'DIGITALIZADOR', '009', 'CARESTREAM', '850', 'NR', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(10, 'MAMOGRAFO', '010', 'G.E.', 'SENOGRAPH 600T', 'NR', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(11, 'RX FIJO', '011', 'POSKON', 'NR', 'NR', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(12, 'DIGITALIZADOR', '012', 'CARESTREAM', 'CLASSIC', 'NR', 'BUENO', 'N/A', 'PROPIO', 'STOCK'),
+(13, 'RX PORTATIL', '013', 'VILLA', 'VISITORT30', 'NR', 'REPARACION', 'N/A', 'PROPIO', 'STOCK'),
+(14, 'RX FIO', 'N.A', 'SG HEALT CORE', 'JUMONG', 'SJCE1503001', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(15, 'RX PORTATIL', 'N.A', 'SMAM', 'ROLLER 15', 'T9000', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(16, 'MAMOGRAFO', 'N.A', 'SIEMENS', 'MAMOMAT 3000', '05182511', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(17, 'RX FIJO', '14', 'JUMONG', 'PXP401B', '1904011', 'BUENO', 'N.A', 'PROPIO', 'EN CONTRATO A/M'),
+(18, 'DIGITALIZADOR', 'N.A', 'CARESTREAM', 'CLASSIC', '4000653', 'BUENO', 'N.A', 'PROPIO', 'EN CONTRATO A/M'),
+(19, 'RX FIJO', 'N.A', 'TOSHIBA', 'RAD 2', '99D0585977', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(20, 'RX PORTATIL', 'N.A', 'PHILIPS', '33 PLUS', 'P5-775', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(21, 'RX PORTATIL', 'N.A', 'SIEMENS', 'POLYMOBIL III', '1733', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(22, 'DIGITALIZADOR', 'NA', 'CARESTREAM', 'CLASSIC', '320744', 'BUENO', 'N.A', 'PROPIO', 'EN CONTRATO A/M'),
+(23, 'RX PORTATIL', 'N.A', 'SIEMENS', 'POLIMOBIL PLUS', '53285', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(24, 'RX PORTATIL', 'N.A', 'RADIOLOGIA', 'TX16MLP', 'G35517', 'FUERA DE SERVICIO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(25, 'ARCO EN C', 'NA', 'PHILIPS', 'BV LIBRA 9', '001340FL0013', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(26, 'DIGITALIZADOR', 'NA', 'CARESTREAM', 'CLASSIC CR', 'K54841600', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(27, 'PANORAMICO', 'N.A', 'J.MOTITA', 'PANEX EC', 'GG09', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(28, 'RX FIJO', 'N.A', 'TXRD', '325', '14P515', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(29, 'DIGITALIZADOR', 'N.A', 'AGFA', 'CR30XM', '3628', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(30, 'RX FIJO', 'N.A', 'TXRD', '525SFQ', '31809', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(31, 'DIGITALIZADOR', 'N.A', 'AGFA', 'CRX30X', '51753', 'BUENO', 'N.A', 'TERCERO', 'CONTRATO MATTO'),
+(32, 'DIGITALIZADOR', '08', 'CARESTREAM', 'CR VITA', '100914175', 'BUENO', 'N.A', 'PROPIO', 'EN CONTRATO A/M'),
+(33, 'RX PERIAPICAL', '18', 'GENDEX', 'GX770', '7701404587DP', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(34, 'RX PERIAPICAL', '2949', 'GENDEX', 'GX770', '7701402821DP', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(35, 'RX FIJO', 'N.A', 'TINGLE XRAY', 'TXR325D', '24562', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(36, 'DIGITALIZADOR', 'N.A', 'CARESTREAM', 'VITA', '190114290', 'BUENO', 'N.A', 'TERCERO', 'EN CONTRATO A/M'),
+(37, 'RX FIJO', 'NA', 'TRX', 'TRX 325P', '28437', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(38, 'RX FIJO', 'NA', 'CGR', 'STATORIX 24090', '22217', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(39, 'DIGITALIZADOR DE IMAGENES', 'NA', 'CARESTREAM', 'VITA CR', '160914267', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(40, 'RX PORTATIL', 'NA', 'SIEMENS', 'POLIMOBIL PLUS', '53301', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(41, 'RX FIJO', 'NA', 'DRGEM', 'GXR-40', '6AB2192605A', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(42, 'RX FIJO', 'NA', 'CONTROL X', 'CONRAD 425HF', '1525', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M'),
+(43, 'RX PORTATIL', '72248', 'ECORAY', 'LTRA 100', 'SP9-2002054', 'BUENO', 'NA', 'TRCERO', 'EN CONTRATO A/M'),
+(44, 'FLUROSCOPIO', '187928', 'XISCAN', '450-6', '218/291', 'BUENO', 'NA', 'TERCERO', 'EN CONTRATO A/M');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario`
+--
+
+CREATE TABLE `inventario` (
+  `id_inventario` int(11) NOT NULL,
+  `fecha_add` datetime NOT NULL DEFAULT current_timestamp(),
+  `equipo` int(11) NOT NULL,
+  `frecuencia_matto` varchar(45) NOT NULL,
+  `fijo_movil` varchar(45) NOT NULL,
+  `cliente` int(11) NOT NULL,
+  `pais` int(11) NOT NULL,
+  `ciudad` int(11) NOT NULL,
+  `sede` int(11) NOT NULL,
+  `area` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`id_inventario`, `fecha_add`, `equipo`, `frecuencia_matto`, `fijo_movil`, `cliente`, `pais`, `ciudad`, `sede`, `area`) VALUES
+(1, '2022-02-10 01:28:44', 1, 'TRIMESTRAL', 'FIJO', 1, 1, 1, 1, 2),
+(2, '2022-02-10 01:31:18', 5, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 3, 1),
+(3, '2022-02-10 01:59:45', 4, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 2, 1),
+(4, '2022-02-10 18:29:49', 3, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 1, 1),
+(5, '2022-02-10 18:43:21', 16, 'TRIMESTRAL', 'FIJO', 1, 1, 1, 6, 2),
+(6, '2022-02-14 19:28:56', 14, 'TRIMESTRAL', 'FIJO', 1, 1, 1, 6, 1),
+(7, '2022-02-14 19:35:03', 15, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 6, 1),
+(8, '2022-02-25 17:41:54', 17, 'TRIMESTRAL', 'FIJO', 1, 1, 1, 1, 1),
+(9, '2022-02-28 17:52:20', 6, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 7, 1),
+(10, '2022-03-08 02:24:03', 18, 'TRIMESTRAL', 'MOVIL', 10, 1, 4, 8, 1),
+(11, '2022-03-12 23:11:40', 19, 'TRIMESTRAL', 'FIJO', 1, 1, 1, 7, 1),
+(12, '2022-03-14 17:03:20', 20, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 2, 1),
+(13, '2022-03-14 20:53:01', 21, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 9, 1),
+(14, '2022-03-15 13:50:52', 22, 'TRIMESTRAL', 'MOVIL', 3, 1, 1, 10, 1),
+(15, '2022-03-19 21:13:30', 23, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 7, 1),
+(16, '2022-03-25 21:00:13', 24, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 11, 1),
+(17, '2022-03-29 13:41:36', 25, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 2, 4),
+(18, '2022-03-29 14:02:52', 26, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 6, 1),
+(19, '2022-04-11 14:18:37', 28, 'SEMESTRE', 'FIJO', 8, 1, 1, 12, 1),
+(20, '2022-04-12 23:18:19', 27, 'SEMESTRE', 'FIJO', 8, 1, 6, 12, 1),
+(21, '2022-04-16 21:04:17', 31, 'SEMESTRE', 'FIJO', 8, 1, 9, 14, 1),
+(22, '2022-04-16 21:05:35', 29, 'SEMESTRE', 'FIJO', 8, 1, 6, 12, 1),
+(23, '2022-04-17 00:33:28', 30, 'SEMESTRAL', 'FIJO', 8, 1, 9, 14, 1),
+(24, '2022-04-17 01:00:02', 32, 'SEMESTRE', 'MOVIL', 4, 1, 1, 13, 1),
+(25, '2022-04-21 12:37:42', 33, 'ANUAL', 'FIJO', 6, 1, 10, 16, 5),
+(26, '2022-04-21 12:38:16', 34, 'ANUAL', 'FIJO', 6, 1, 10, 17, 5),
+(27, '2022-05-25 02:18:44', 35, 'SEMESTRE', 'FIJO', 11, 1, 1, 18, 1),
+(28, '2022-06-17 01:40:38', 36, 'SEMESTRE', 'MOVIL', 6, 1, 12, 19, 1),
+(29, '2022-09-23 02:16:57', 37, 'ANUAL', 'FIJO', 12, 1, 3, 5, 1),
+(30, '2022-09-24 22:16:47', 38, 'ANUAL', 'FIJO', 13, 1, 13, 20, 1),
+(31, '2022-09-24 22:17:25', 39, 'ANUAL', 'FIJO', 13, 1, 13, 20, 1),
+(32, '2022-09-26 15:05:48', 40, 'TRIMESTRAL', 'MOVIL', 1, 1, 1, 7, 1),
+(33, '2022-10-20 22:34:19', 41, 'SEMESTRAL', 'FIJO', 14, 1, 14, 21, 1),
+(34, '2022-11-19 00:40:04', 42, 'TRIMESTRAL', 'FIJO', 6, 1, 15, 22, 1),
+(35, '2022-11-29 14:02:28', 44, 'ANUAL', 'MOVIL', 15, 1, 1, 23, 1),
+(36, '2022-11-29 14:03:28', 43, 'ANUAL', 'MOVIL', 15, 1, 16, 24, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pais`
+--
+
+CREATE TABLE `pais` (
+  `id_pais` int(11) NOT NULL,
+  `nombre_pais` varchar(45) NOT NULL,
+  `estatus_pais` varchar(30) NOT NULL DEFAULT 'ACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pais`
+--
+
+INSERT INTO `pais` (`id_pais`, `nombre_pais`, `estatus_pais`) VALUES
+(1, 'COLOMBIA', 'ACTIVO'),
+(2, 'PANAMA', 'ACTIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `problema_reportado`
+--
+
+CREATE TABLE `problema_reportado` (
+  `id_problema_reportado` int(11) NOT NULL,
+  `nombre_problema_report` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `problema_reportado`
+--
+
+INSERT INTO `problema_reportado` (`id_problema_reportado`, `nombre_problema_report`) VALUES
+(1, 'ELÉCTRICO'),
+(2, 'ELECTRÓNICO'),
+(3, 'MECÁNICO'),
+(4, 'CONEXIÓN'),
+(5, 'OPERATIVO'),
+(6, 'ACCESORIO'),
+(7, 'INCONSISTENCIA DE SOFTWARE'),
+(8, 'ACTUALIZACIÓN'),
+(9, 'NO APLICA'),
+(10, 'OTRO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `protocolo_matto`
+--
+
+CREATE TABLE `protocolo_matto` (
+  `id_protocolo_matto` int(11) NOT NULL,
+  `nombre_protocolo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reporte`
+--
+
+CREATE TABLE `reporte` (
+  `id_reporte` int(11) NOT NULL,
+  `inventario` int(11) NOT NULL,
+  `tipo_servicio` int(11) NOT NULL,
+  `otro_servicio` varchar(45) NOT NULL,
+  `tipo_asistencia` int(11) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `fecha_final` date NOT NULL,
+  `hora_final` time NOT NULL,
+  `protocolo_matto` int(11) NOT NULL,
+  `motivo_servicio` varchar(80) NOT NULL,
+  `estdo_inicial_equipo` varchar(100) NOT NULL,
+  `problemas_report` int(11) NOT NULL,
+  `otro_problema` varchar(45) NOT NULL,
+  `actividad_realizada` varchar(600) NOT NULL,
+  `observa_general` varchar(600) NOT NULL,
+  `cant_repto_utilizados` varchar(45) NOT NULL,
+  `cant_repto_cotizar` varchar(45) NOT NULL,
+  `descrip_repto_utilizados` varchar(100) NOT NULL,
+  `descrip_repto_cotizar` varchar(100) NOT NULL,
+  `equipo_operativo` varchar(10) NOT NULL,
+  `observa_equipo` varchar(200) NOT NULL,
+  `tecnico_usuario` int(11) NOT NULL,
+  `estatus` varchar(30) NOT NULL DEFAULT 'PENDIENTE'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reporte`
+--
+
+INSERT INTO `reporte` (`id_reporte`, `inventario`, `tipo_servicio`, `otro_servicio`, `tipo_asistencia`, `fecha_inicio`, `hora_inicio`, `fecha_final`, `hora_final`, `protocolo_matto`, `motivo_servicio`, `estdo_inicial_equipo`, `problemas_report`, `otro_problema`, `actividad_realizada`, `observa_general`, `cant_repto_utilizados`, `cant_repto_cotizar`, `descrip_repto_utilizados`, `descrip_repto_cotizar`, `equipo_operativo`, `observa_equipo`, `tecnico_usuario`, `estatus`) VALUES
+(1, 3, 1, 'NA', 3, '2022-02-07', '08:00:00', '2022-02-07', '12:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'FUNCIONANDO CORRECTAMENTE', 9, 'NA', 'SE REALIZA MANTENIMIENTO DE ACUERDO A PROTOCOLOS DE FABRICANTE', 'ANEXO PROTOCOLO MANTENIMIENTO', '0', '0', 'N.A', 'N.A', 'Si', 'SE ENTREGA EQUIPO A SATISFACCIÓN', 1, 'FINALIZADO'),
+(2, 7, 1, 'NA', 3, '2022-02-08', '13:00:00', '2022-02-08', '15:00:00', 2, 'Mantenimiento programado', 'Cable de poder de alimentación con blindaje, ', 9, 'NA', 'Se hace mantenimiento deacuerdo a protocolo', 'Se requiere cambio de cable de poder', '0', '5', 'N.A', 'CABLE ENCAUCHETADO 14X3 ', 'Si', 'Queda operativo pendiente el cambio de cable', 1, 'FINALIZADO'),
+(3, 5, 1, 'NA', 3, '2022-02-08', '14:00:00', '2022-02-08', '16:00:00', 0, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 5, 'NA', 'SE REALIZA MANTENIMIENTO DE ACUERDO A PROTOCOLO DE FABRICANTE', 'NO PERMITE COMUNICACION ENTRE CONSOLA Y COMPUTADOR DE SERVICIO', '0', '1', 'NA', 'TARJETA D702', 'Si', 'TARJETA DE COMUNICACION PRESENTA FALLA PARA C', 1, 'FINALIZADO'),
+(4, 6, 1, 'NA', 3, '2022-02-08', '08:00:00', '2022-02-08', '12:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'ERROR DE OVER CON TECNICAS ALTAS', 5, 'NA', 'SE HACE MANTENIMIENTO DE ACUERDO A PROTOCOLO', 'SE HACE AJUSTE DE PARAMETROS KVA Y mAS', '0', '0', 'NA', 'NA', 'Si', 'SE ENTREGA EL EQUIPO OPERATIVO CON LA ACLARAC', 1, 'FINALIZADO'),
+(5, 9, 4, 'NA', 3, '2022-02-18', '08:00:00', '2022-02-18', '09:00:00', 1, 'ENTREGA DE CR POR CONTINGENCIA', 'SE ENTREGA EN BUEN ESTADO DE FUNCIONAMIENTO', 9, 'NA', 'INSTALACION', 'SE ENTREGAN 4 CHASIS DE 14X17 Y UN 10X12 MAS ACCESORIOS DE ESTACION DE TRABAJO', '0', '0', 'NA', 'NA', 'Si', 'TIEMPO INDEFINIDO', 1, 'FINALIZADO'),
+(6, 4, 1, 'NA', 3, '2022-02-10', '14:00:00', '2022-02-10', '16:00:00', 2, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'SE HACE MANTENIMIENTO DE ACUERDO A PROTOCOLO DE FABRICANTE', 'SE HACE VERIFICACION DE PARAMETROS KV Y mAS', '0', '0', 'NA', 'NA', 'Si', 'SE HACEN PRUEBAS DE FUNCIONAMIENTO Y SE ENTRE', 1, 'FINALIZADO'),
+(7, 3, 2, 'NA', 3, '2022-02-14', '12:00:00', '2022-03-05', '16:00:00', 1, 'EQUIPO PRESENTA ERROR 31 AL DISPARO', 'SE DIAGNOSTICA DAÑO EN MONOBLOQUE', 5, 'NA', 'SE RETIRA MONOBLOQUE DEL SERVICIO PARA SER ANALIZADO Y REPARADO EN LABORATORIO', 'SE HACE CAMBIO DE ACEITE Y VACIÓ , SE HACE LIMPIEZA DE BOBINAS DE FILAMENTO, \nSE ENCONTRO FUGAS DE A', '2', '0', 'ACEITE DIALA S4', 'NA', 'Si', 'SE RECOMIENDA EVITAR GOLPEAR EL MONOBLOQUE', 1, 'FINALIZADO'),
+(8, 13, 1, 'NA', 3, '2022-03-14', '08:00:00', '2022-03-14', '10:00:00', 2, 'MANTENIMIENTO PROGRAMADO', 'LUZ COLIMADOR INTERMITENTE', 4, 'NA', 'SE HACE MANTENIMIENTO DE ACUERDO A PROTOCOLO', 'SE HACE CAMBIO DE PORTA FUSIBLES Y UN RELEVO', '5', '0', 'PORTAFUSIBLES\nRELEVO DE 24V', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(9, 11, 1, 'NA', 3, '2022-03-11', '08:00:00', '2022-03-11', '11:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'FRENO DE COLUMNA SUELTO', 9, 'NA', 'SE REALIZA MANTENIMIENTO DE ACUERDO A PROTOCOLO\n				\n', 'AJUSTE DE FRENOS DE COLUMNA Y BUKY MESA', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(10, 14, 4, 'NA', 3, '2022-03-15', '11:00:00', '2022-03-16', '15:00:00', 1, 'TRASLADO DE EQUIPO', 'BUENO', 9, 'NA', 'TRANSPORTE DE EQUIPO DE BOGOTA A SAN ALBERTO ', 'NA', '0', '0', 'NA', 'NA', 'Si', 'ALQUILER POR DOS MESES', 1, 'FINALIZADO'),
+(11, 15, 2, 'NA', 3, '2022-03-11', '12:00:00', '2022-03-11', '15:00:00', 1, 'REPARACION DE EQUIPO DAÑO EN TARJETAS D962 Y ', 'ERRORES 6 Y 13', 5, 'NA', 'SE HACE CAMBIO DE FUSIBLES DE BANCO DE CONDENSADORES, CAMBIO DE TARJETA D952 Y D962', 'LOS CONTINUOS DAÑOS DE TARJETA DE CARGA SON OCASIONADOS POR LA FUGA DE CORRIENTE EN LAS ACOMETIDAS E', '1', '0', 'D952\nD962\n20CT', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(12, 6, 2, 'NA', 3, '2022-03-01', '08:00:00', '2022-03-05', '22:00:00', 1, 'PRESENTA ERROR 01 Y OVER', 'EQUIPO PRESENTA ERROR AL SELECCIONAR TECNICAS', 5, 'NA', 'SE HACE DIAGNOSTICO CON TARJETAS DE GENERADOR Y CONSOLA.\nSE DIAGNOSTICA DAÑO EN TARJETA DE CONSOLA Y', 'CAMBIAR CONTACTORES DE ENTRADA\nTARJETA DE CONSOLA \nY REPARAR TARJETA DE FUENTES DE GENERADOR', '0', '1', 'NA', 'TARJETA CONSOLA\nTARJETA CPU GENRADOR', 'Si', 'EQUIPO QUEDA OPERANDO CON LIMITACIONES EN LAS', 1, 'FINALIZADO'),
+(13, 12, 1, 'NA', 3, '2022-03-14', '14:00:00', '2022-03-14', '15:00:00', 1, 'MANTENIMEINTO PROGRAMADO', 'FRENO DE SOPORTE DE BRAZO PRESENTA DESGASTE', 6, 'NA', 'SE HACE MANTENIMIENTO DE ACUERDO A PROTOCOLO DE FABRICANTE', 'SE HACE AJUSTE DE FRENO DE SOPORTE DE TUBO', '1', '0', 'SEGURO PIN', 'NA', 'Si', 'SOLTAR EL SEGURO ANTES DE EJERCER FUERZA EN E', 1, 'FINALIZADO'),
+(14, 16, 5, 'NA', 3, '2022-03-04', '12:00:00', '2022-03-04', '14:00:00', 1, 'DIAGNOSTICO Y COTIZACION DE REPARACION', 'EQUIPO FUERA DE SERVICIO\nFALTA SEGURO DE BRAZ', 5, 'NA', 'SE HICIERON PRUEBAS DE FUNCIONAMIENTO Y EL LAS TECLAS DE CONTROL NO ACTUAN', 'PARA REALIZAR LA REPARACION ES NECESARIO RETIRAR EL EQUIPO COMPLETO DE LA SEDE', '0', '4', 'NA', 'RODAMIENTOS\nSOLDADURA\nTECLADO DE CONSOLA\nSEGU', 'No', 'FUERA DE SERVICIO', 1, 'FINALIZADO'),
+(15, 17, 1, 'NA', 3, '2022-03-28', '15:00:00', '2022-03-28', '16:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'SE EVIDENCIA PERFORACIONES EN LA REJILLA DE I', 4, 'NA', 'SE HACE MANTENIMIENTO DE ACUERDO A PROTOCOLO DE FABRICANTE\nSE HACE LIMPIEZA DE REJILLA DE INTENSIFIC', 'LAS PERFORACIONES DE LA REJILLA DEL INTENSIFICADOR GENERAN ARTIFICIOS EN LA IMAGEN DIFICULTANDO EL D', '0', '1', 'NA', 'REJILLA DE 9 PULGADAS INTENSO', 'Si', 'EL EQUIPO SE DEJA OPERATIVO CON LA OBSERVACIÓ', 1, 'FINALIZADO'),
+(16, 18, 2, 'NA', 3, '2022-03-26', '18:00:00', '2022-03-26', '18:30:00', 1, 'SOLICITUD DE CAMBIO DE CÓDIGOS DE BARRAS EN C', 'LOS CÓDIGOS DE BARRAS DE CASSETTES DE MAMOGRA', 5, 'NA', 'SE HACE CAMBIO DE CUATRO CÓDIGOS DE BARRAS PARA LOS CHASIS DE MAMOGRAFIA', 'SE HACE PRUEBAS DE FUNCIONAMIENTO ', '0', '4', 'NA', 'CODIGOS DE BARRA MAMO', 'Si', 'NA', 1, 'FINALIZADO'),
+(17, 19, 1, 'NA', 3, '2022-04-09', '08:00:00', '2022-04-09', '12:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar del estado del panel de control de mando, tapas, carcasas, tornillería y pintura en genera', 'PINTURA DE SOPORTE DE CHASIS MURAL SE ENCUENTRA DETERIORADA', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(18, 22, 1, 'NA', 3, '2022-04-09', '14:00:00', '2022-04-09', '16:00:00', 6, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar temperatura ambiente.\nVerificar estado de monitores, CPU, accesorios del equipo\nVerificaci', 'MANTENER SIEMPRE CON AIRE ACONDICIONADO LA SALA PARA EVITAR DAÑOS POR SOBRECALENTAMIENTO', '0', '1', 'NA', 'cassette 10x12\ncassette 14x17', 'Si', 'NA', 1, 'FINALIZADO'),
+(19, 20, 1, 'NA', 3, '2022-04-09', '17:00:00', '2022-04-09', '19:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'IMAGEN ADQUIRIDA MUESTRA POCA DEFINICION EN L', 10, 'NA', 'LUBRICACION DE RODAMIENTOS Y MOVIMIENTOS DE RECORRIDO PANORAMICO\nVERIFICACION DE COLIMACION\nVERIFICA', 'SE HACE AJUSTE DE CORRIENTES DE TUBO PARA MEJORAR LA DEFINICION DE IMAGEN', '0', '0', 'NA', 'NA', 'Si', 'SE HACEN PRUEBAS CON PACIENTE Y SE NOTA MEJOR', 1, 'FINALIZADO'),
+(20, 21, 1, 'NA', 3, '2022-04-10', '11:00:00', '2022-04-10', '13:00:00', 6, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificación del estado de lámparas de borrado\nLimpieza de colector de imagen\nLimpieza lubricación d', 'MANTENER TEMPERATURA DE ACUERDO A INSTRUCCIONES DE FABRICA PARA EVITAR CALENTAMIENTO DE FUENTE', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(21, 23, 1, 'NA', 3, '2022-04-10', '08:00:00', '2022-04-10', '12:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'LUZ DE COLIMADOR NO ENCIENDE', 5, 'NA', 'Verificar el movimiento de transporte de la columna vertical\nVerificar el desplazamiento oblicuo, ve', 'SE ENCONTRO DAÑO DE TARJETA DE TIEMPO DE COLIMADOR\nDAÑO DE SOCKET DE HALOGENO\nDESGASTE EN SELECTOR D', '0', '1', 'NA', 'SOCKET PARA LAMPARA\nTARJETA ELECTRONICA DE TI', 'Si', 'EL EQUIPO QUEDA OPERATIVO CON LA ACLARACION D', 1, 'FINALIZADO'),
+(22, 2, 1, 'NA', 3, '2022-04-12', '09:00:00', '2022-04-12', '10:00:00', 6, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar del estado de scanner, tapas, carcasas, tornillería y pintura en general.\r\nVerificarlas et', 'NA', '0', '0', 'NA', 'NA', 'SI', 'NA', 1, 'FINALIZADO'),
+(23, 1, 1, 'NA', 3, '2022-04-12', '14:00:00', '2022-04-12', '18:00:00', 4, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar del estado del panel de control de mando, tapas, carcasas, tornillería y pintura en genera', 'MANTENER TEMPERATURA POR DEBAJO DE 22 GRADOS C. PARA EVITAR SOBRECALENTAMIENTOS DE TUBO RX', '0', '0', 'NA', 'NA', 'SI', 'NA', 1, 'FINALIZADO'),
+(24, 25, 2, 'NA', 3, '2022-04-19', '08:00:00', '2022-04-19', '09:00:00', 1, 'DESAJUSTE EN TIEMPO DE DISPARO', 'ESTADO MECANICO DEL EQUIPO BUENO\nESTADO ELECT', 5, 'NA', 'SE HACE MEDICIÓN DE TIEMPO DE DISPARO EN VARIAS PARAMETROS Y SE ENCONTRÓ UN DESAJUSTE DE 80%\nSE REAL', 'VALOR  DE REFERENCIA EN SEGUNDOS                 0.05          0.60              0.83            1.0', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(25, 26, 2, 'NA', 3, '2022-04-19', '10:00:00', '2022-04-19', '11:00:00', 1, 'DESAJUSTE EN TIEMPO DE DISPARO', 'ESTADO MECANICO DEL EQUIPO BUENO\nESTADO ELECT', 5, 'NA', 'SE HACE MEDICIÓN DE TIEMPO DE DISPARO EN VARIAS PARAMETROS Y SE\nENCONTRÓ UN DESAJUSTE DE 20% ENCUANT', 'VALOR DE REFERENCIA EN SEGUNDOS    0.30     0.41     0.60   1.30\nVALOR DE MEDIDA EN MILISEGUNDOS 296', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(26, 1, 1, 'NA', 3, '2022-04-12', '14:00:00', '2022-04-12', '17:00:00', 4, 'MANTENIMIENTO PROGRAMADOS', 'BUENO', 9, 'NA', 'Verificar y ajustar los, soporte de tubo, tensor de contrapeso, rotación de gantry, desplazamiento y', 'MANTENER EL AIRE ACONDICIONADO PARA EVITAR SOBRECALENTAMIENTOS DE TUBO', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(27, 2, 1, 'NA', 3, '2022-04-12', '10:00:00', '2022-04-12', '11:00:00', 6, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar del estado de scanner, tapas, carcasas, tornillería y pintura en general.\nVerificarlas eti', 'NA', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(28, 8, 2, 'NA', 3, '2022-05-01', '08:00:00', '2022-05-03', '22:10:00', 1, 'EQUIPO PRESENTA ERROR 22 AL DISPARO', 'SE ENCONTRO DAÑO EN EL BANCO DE IGBT DE ALTA ', 5, 'NA', 'SE HACE REEMPLAZO DE MODULOS DE IGBT, REPARACION DE TARJETA DE CONTROL DE DISPARO DE IGBT, Y REPARAC', 'DAÑO OCACIONADO POR SOBRECARGA DE TENSION EN LA RED ELECTRICA', '2', '0', 'BSM300GB120DLC\nFUSIBLE 150A 300VC\nRESISTENCIA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(29, 4, 1, 'NA', 3, '2022-05-07', '09:00:00', '2022-05-07', '12:00:00', 2, 'MANTENIMIENTO PROGRAMADO', 'EQUIPO PRESENTA ROPTURA DE TORNILLO DE TAPA D', 9, 'NA', 'Verificar y ajustar los frenos de rodamientos, soporte de tubo, tensor de contrapeso y soporte del c', 'SE HACE REPARACION DE TAPA DE RUEDA', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(30, 3, 1, 'NA', 3, '2022-05-07', '15:00:00', '2022-05-07', '17:00:00', 2, 'MANTENIMIENTO PREVENTIVO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar y ajustar los frenos de rodamientos, soporte de tubo, tensor de contrapeso y soporte del c', 'PRESENTA DAÑO EN LOS AJUSTE DE TORNILLO DE LA TAPA DE TECLADO', '0', '0', 'NA', 'NA', 'Si', 'SE PROGRAMARA UNA VISITA PARA CAMBIO DE TAPA ', 1, 'FINALIZADO'),
+(31, 27, 2, 'NA', 3, '2022-05-20', '08:30:00', '2022-05-20', '11:00:00', 1, 'REPORTAN DESAJUSTE DE TIEMPO', 'EL EQUIPO NO CUENTA CON DISPLAY DE VISUALIZAC', 5, 'NA', 'SE VERIFICA Y SE JUSTE VALORES DE MA.\nSE HIZO VERIFICACION Y AJUSTE DE TIEMPO CON 9 VALORES PREDETER', 'ES NECESARIO EL CAMBIO DE TEMPORIZADOR YA QUE EL QUE TIENE PRESENTA INESTABILIDAD', '0', '0', 'NA', 'NA', 'Si', 'PATRON DE MEDIDA UTILIZADO KVMETER MARCA ECC ', 1, 'FINALIZADO'),
+(32, 6, 2, 'NA', 3, '2022-05-05', '14:00:00', '2022-05-14', '17:00:00', 1, 'SE HACE RETIRO DE GENERADOR PARA REPARACION', 'PRESENTA ERRORES 01- 02 \nNO HACE CONEXION DE ', 1, 'NA', 'SE RETIRA EL EQUIPO DE LA SEDE PARA REPARACION Y PRUEBAS DE LABORATORIO\nCONTACTOS DE ENTRADA DESGAST', 'SE ENTREGA EQUIPO OPERATIVO CON LA CONSOLA FUNCIONANDO CORRECTAMENTE Y SE ESTARA COTIZANDO UNA CONSO', '2', '1', 'CONTACTORES\nFUSIBLES 250 AMP\nRESISTENCIA 60W', 'TECLADO CONSOLA', 'Si', 'LOS CONTACTORES FUERON SUMISTRADOS POR EL CLI', 1, 'FINALIZADO'),
+(33, 3, 2, 'NA', 3, '2022-05-18', '15:00:00', '2022-05-18', '16:00:00', 1, 'FALLO EN LUZ COLIMADOR', 'LUZ DE COLIMADOR NO ENCIENDE', 1, 'NA', 'SE ENCUENTRA FILAMENTO DE HALOGENO ABIERTO Y SE REMPLAZA', 'NA', '1', '0', 'HALOGENO 24V 150W', 'NA', 'Si', 'NA', 1, 'CANCELADO'),
+(34, 3, 2, 'NA', 3, '2022-05-18', '15:00:00', '2022-05-18', '16:00:00', 1, 'FALLO LUZ COLIMADOR', 'LUZ COLIMADOR NO ENCIENDE', 5, 'NA', 'SE ENCONTRO HALOGENO QUEMADO Y SE HACE EL REMPLAZO DE HALOGENO', 'NA', '1', '0', 'HALOGENO 24V 150W', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(35, 27, 2, 'NA', 3, '2022-05-20', '08:30:00', '2022-05-20', '11:30:00', 1, 'DESAJUSTE DE TIEMPO DE EXPOSICION ', 'EL EQUIPO NO CUENTA CON DISPLAY DE VISUALIZAC', 5, 'NA', 'SE VERIFICA Y SE JUSTE VALORES DE MA.\nSE HIZO VERIFICACION Y AJUSTE DE TIEMPO CON 9 VALORES\nPREDETER', 'PATRON DE MEDIDA UTILIZADO KVMETER MARCA ECC MODELO 820', '0', '0', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(36, 7, 2, 'NA', 3, '2022-06-08', '09:00:00', '2022-06-08', '18:00:00', 1, 'DESCONFIGURACION', 'EQUIPO NO SUBE EL SISTEMA', 7, 'NA', 'SE HACE CONFIGURACION DEL SISTEMA SEGUN EL MANUAL DE SERVICIO\nAJUSTE DE CORRIENTES DE TUBO\nAJUSTE DE KV\nAJUSTE DE TIEMPOS\n	60KV	110KV	60KV	110KV\nmA	AJUSTE	AJUSTE	AJUSTE	AJUSTE\n25	2080	2050	2080	2050\n50	2190	2155	2200	2170\n100	2332		2340	\n200	2496			\n', 'SE HIZO AJUSTE UTILIZANDO PATRON DE MEDIDA MODELO ECC 820', 'NA', 'NA', 'NA', 'NA', 'Si', 'TUBO DE RX PRESENTA RUIDO EN EL ANODO POR DESJASTE NORMAL', 1, 'FINALIZADO'),
+(37, 5, 2, 'NA', 3, '2022-05-30', '15:15:00', '2022-06-08', '17:00:00', 1, 'REPORTANFALLA DE CONTROLES', 'FALLA DE CONTROL DE MANDOS DE GANTRY\nFALLA DE POSICIONAMIENTO DE FILTRO', 5, 'NA', 'SE HIZO REVISION DE CONESCTORES, PULSADORES DE CONTROLES DE ROTACION DE GANTRY, SE HACE TEST DE CONDUCTIVIDAD DE CABLES, SE HACE AJUSTE DE POSICIONAMIENTO DE GANTRY', 'SE ENCONTRO CONECTORERS ABIERTOS Y POTENCIOMETRO FUERA DE POSICION\nDAÑO DE MOTOR A PASO DE FILTRO', 'NA', '1', 'NA', 'MOTOR A PASO 12V 52 OHM', 'Si', 'EL EQUIPO QUEDA OPERATIVO CON FUNCION DE FILTRO EN MO/MO Y MO/RH NO OPERA EN W/RH', 1, 'FINALIZADO'),
+(38, 8, 1, 'NA', 3, '2022-06-03', '08:00:00', '2022-06-03', '14:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'SE HACE CAMBIO DE RESISTENCIAS DE TARJETA DE POTENCIA DE GENERADOR\nSEHACE CAMBIO DE 4 DISPLAY DE 7 SEGMENTOS DE TECLADO', 'SE VERIFICA Y SE AJUSTA KV Y CORRIENTES DE TUBO\nSE HACE AJUSTE DE FRENOS DE MESA', '4\n10', 'NA', 'DISPLAY DE 7 SEGMENTOS\nRESISTENCIAS 1W', 'NA', 'Si', 'LOS REPUESTOS REEMPLAZADOSSE HACE POR DESGASTE NORMAL PREVENTIVO,  NO POR DAÑO', 1, 'FINALIZADO'),
+(39, 28, 2, 'NA', 3, '2022-06-16', '11:00:00', '2022-06-17', '12:30:00', 1, 'ATASCO DE PANTALLA Y LECTURA DE CODIGO DE BARRAS', 'BUENO', 5, 'NA', 'SE HACE LIMPIEZA DE SENSOR DE DETECCCION DE LECTURA DE BARRAS\nSE HACE LIMPIEZA DE RODILLOS\nY LUBRICACION DE TORNILLO SINFIN', 'LOS RODILLOS PRESENTAN DESGASTE DE RECUBRIMIENTO QUE HACE QUE LA PANTALLA SE ATASQUE', 'NA', '1', 'NA', 'JUEGO DE RODILLOS', 'Si', 'ES NESESARIO EL CAMBIO YA QUE ESTO PUEDE DAÑAR LA PANTALLA', 1, 'FINALIZADO'),
+(40, 1, 1, 'NA', 3, '2022-07-06', '10:00:00', '2022-07-06', '12:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'BUENO \nCONTADOR DE DISPAROS 173621', 9, 'NA', 'Verificar y ajustar los, soporte de tubo, tensor de contrapeso, rotación de gantry, desplazamiento y compresión de mama.\nVerificar deslizamiento de regilla de buky\nVerificar y ajustar la medición de altura de paleta de compresión\nVerificar y ajustar la medición de fuerza de compresión\nVerificar y ajustar la medición de la angulación de gantry\nVerificar el funcionamiento de pedales de compresión\n Verificar detector de chasis y chasis de magnificación \nVerificar el funcionamiento de filtros\n Comprobar que el localizador del haz de luz del colimador está operado tanto con el panel de control como', 'SE EVIDENCIA VARIOS ERRORES EN EL LOG INTERNO DEVIDO A CAMBIOS DE VOLTAJE DE ENTRADA', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(41, 2, 2, 'NA', 3, '2022-07-05', '12:00:00', '2022-07-10', '20:00:00', 1, 'NO CAPTURA IMAGEN ', 'EQUIPO HACE EL PROCESO DE DIGITALIZACION PERO NO MUESTRA LA IMAGEN', 7, 'NA', 'SE HIZO CAMBIO DE CABLE USB Y SE HIZO UNA RESTAURACION DEL SISTEMA PERO SIGUIO IGUAL.\nSE RETIZA EL EQUIPO DE LAS INSTALACIONES PARA INSTALAR SOFTWARE Y APLICATIVO DE CARESTREAM', 'SE RECOMIENDA NO INSTALAR APLICACIONES AJENAS A CARESTREAM', '1', 'NA', 'DISCO DURA 1 T', 'NA', 'Si', 'UTILIZAR EL COMPUTADOR SOLO PARA FINES ESPECIFICOS DE IMAGENES', 1, 'FINALIZADO'),
+(42, 3, 1, 'NA', 3, '2022-08-05', '14:08:00', '2022-08-05', '16:09:00', 1, 'MANTENIMIENTO PROGRAMADO', 'TAPA DE TECLADO SUELTA\nFRENOS DESGASTADO', 3, 'NA', 'SE HACE HAJUSTES COLIMACION\nVERIFICACION DE PARAMETROS\n', 'CAMBIO DE CAUCHOS DE FRENOS\nREPARACION DE SOPORTE TORNILLOS DE TAPA', '2', 'NA', 'CAUCHOS FRENO', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(43, 4, 1, 'NA', 3, '2022-08-04', '15:00:00', '2022-08-04', '15:20:00', 1, 'MANTENIMIENTO PROGRAMDA', 'BUENO', 9, 'NA', 'TEST DE COLIMACION\nLUBRICACION DE RODAMIENTOS\nVERIFICACION DE PARAMETROS', 'NA', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(44, 18, 2, 'NA', 3, '2022-07-27', '02:00:00', '2022-07-27', '06:00:00', 1, 'REPORTAN DESAJUSTE DE IMAGEN', 'IMAGEN SALE CORTADA\nGLAVO SE ENCONTRO SUELTO', 5, 'NA', 'SE HACE AJUSTE DE GALVO\nAJUSTE Y CALIBRACION DE IMAGEN\nAJUSTE Y ALINEACION DE ESPEJOS\nAJUSTE DE UNIDAD OPTICA', 'SE HACEPRUEBAS DEFUNCIONAMIENTO CON DIFERENTES CHASIS', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(45, 3, 2, 'NA', 3, '2022-09-08', '10:00:00', '2022-09-08', '13:00:00', 1, 'EQUIPO PRESENTA ERROR 08', 'SOPORTE DE TAPA TUBO SUELTO\n', 5, 'NA', 'SE HACE VERIFICACION DE CONEXIONES \nLIMPIEZA DE CONTACTOS Y VERIFICACION DE PARAMETROS\n', 'SE EVIDENCIA SOBRECARGA EN BANCO DE CONDENSADORES Y TARJETA DE CARGA Y DESCARGA', 'NA', 'NA', 'NA', 'NA', 'Si', 'SE RECOMIENDA EL USO ADECUADO EN CUANTO A LA CARGA DE TRABAJO YA QUE EL EQUIPO ES DE 16 KW Y NO REEMPLAZA A UN FIJO DE 45KW', 1, 'FINALIZADO'),
+(46, 2, 2, 'NA', 3, '2022-09-07', '18:00:00', '2022-09-07', '19:00:00', 1, 'NO DIGITALIZA CHASIS DE 10X12', 'PRESENTA ERROR DE DIGITALIZACION CON CHASIS DE 10X12', 6, 'NA', 'SE HACE LIMPIEZA DE RODILLOS\nSE HACE PRUEBAS CON VARIOS CHASIS', 'SE HACE CAMBIO DE CHASIS TAMAÑO 10X12', '2', 'NA', 'CHASIS 10X12', 'NA', '¿El equipo', 'SE HACE CAMBIO DE UN CHASIS 10X12 Y SE ENTREGA UN ADICIONAL', 1, 'FINALIZADO'),
+(47, 29, 2, 'NA', 1, '2022-09-16', '12:00:00', '2022-09-19', '17:00:00', 1, 'EQUIPO NO EMITE RX', 'LUZ DE COLOMADOR DIRECTA\nNO HAY EMISION DE RX\nFRENOS DESAJUSTADOS', 5, 'NA', 'SE ENCONTRO DAÑO EN CONTACTOS DEL SELECTOR DE mA EL CUAL SE HACE SU REPARACION\nSE CAMBIA RELEVO DE TEMPORIZADOR DE LUZ COLIMADOR\nSE HACE CAMBIO DE ELECTROFRENOS DE MESA\nSE HACE CAMBIO DEBUKY DEMESA\nSE HACE CAMBIO DE DISPLAY DE TIEMPO', 'SE RECOMIENDA CAMBIAR SELECTOR DE mA\nY AJUSTAR Y VERICAR PARAMETROS PERIODICAMENTE', '1\n2\n1', '1', 'RELEVO 24V DC\nELECTROFRENOS\nTARJETA DE TIEMPO', 'SELECTOR DEE20 AMP 5 PASOS', 'Si', 'NA', 1, 'FINALIZADO'),
+(48, 32, 2, 'NA', 3, '2022-08-19', '08:00:00', '2022-08-30', '08:00:00', 1, 'DAÑO ELECTRONICO POR TENSION DE RED', 'SE ENCONTRO CORTOCIRCUITO EN TARJETA D952 Y DESPRENDIMIENTO DE CONDENSADORES EN TARJETA D962\nTARJETA', 1, 'NA', 'SE HACE CAMBIO DE TARJETAS D952 Y D962\nSE VERIFICA CARGA Y DESCARGA DE CONDENSADORES\nSE HACE CALIBRACION DE CORRIENTES Y KV\n', 'SE REVISO LA RED ELECTRICA EN LOS PUNTOS DONDE OCURRIO EL DAÑO Y SE ENCONTRO QUE EL POLO A TIERRA TIENE UNA FUGA DE VOLTAJE DE 40V', '1\n1', 'NA', 'D952\nD962', 'NA', 'Si', 'EQUIPO OPERATIVO SIN MEDICION DE DOSIS POR DAÑO DE TARJETA', 1, 'FINALIZADO'),
+(49, 31, 1, 'NA', 3, '2022-06-25', '10:00:00', '2022-06-25', '14:00:00', 6, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Limpieza rodillos\nLimpieza y lubricación de tornillos sin fin\nVerificación de fuentes de voltaje\nLimpieza verificación mecánica de cassettes y pantallas\nLimpieza de CPU, monitor teclado u ups\nTest de imagen con phantom para escala de gris \nPruebas de homogeneidad de imagen \nTes de resolución de imagen\n', 'SE APRECIA DESGASTE EN ROTACION DE MODULO OPTICO ', 'NA', '1', 'NA', 'MODULO OPTICO', 'Si', 'NA', 1, 'FINALIZADO'),
+(50, 30, 1, 'NA', 3, '2022-06-25', '14:01:00', '2022-06-25', '18:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'ALINEAR EL CAMPO DE LUZ DEL COLIMADOR CON EL CAMPO DE RADIACIÓN\nTEST DE COLIMACIÓN Y CAMPO DE RADIACIÓN.\nVERIFICACIÓN DE PERPENDICULARIDAD DE RAYO.\nALINEACIÓN DE COLIMADOR CON BUKY MESA Y BUKY MURAL\nVERIFICAR NIVELES DE MESA Y BUKY MURAL.\nVERIFICACIÓN DE PARÁMETROS BÁSICOS DE FUNCIONAMIENTO (KVP, MA, T. EXPO)\nEXAMINAR CUIDADOSAMENTE EL CABLE DE ALTA TENSIÓN, LOS CONECTORES DE TARJETAS ELECTRÓNICAS, FUENTES DE PODER Y HAND SWICH.\nVERIFICAR LA LÍNEA DE ALIMENTACIÓN Y LA TIERRA.\nVERIFICAR LOS VALORES DE LA FUENTE DE VOLTAJE (AC Y DC)\n', 'AJUSTE DE mA EN FOCO DE 200\nAJUSTE DE TIEMPO DE EXPOCISION', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(51, 3, 2, 'NA', 3, '2022-09-30', '16:00:00', '2022-09-30', '16:38:00', 1, 'CORRECTIVO', 'NO ENCIENDE LUZ DE COLIMADOR', 5, 'NA', 'SE HACE CAMBIO DE LAMPARA DE COLIMADOR', 'NA', '1', 'NA', 'HALOGENO 24V 150W', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(52, 33, 1, 'NA', 3, '2022-10-20', '08:00:00', '2022-10-20', '12:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'LUZ DE COLIMADOR NO ENCIENDE', 10, 'LUZ COLIMADOR', 'ALINEAR EL CAMPO DE LUZ DEL COLIMADOR CON EL CAMPO DE RADIACIÓN\nTEST DE COLIMACIÓN Y CAMPO DE RADIACIÓN.\nVERIFICACIÓN DE PERPENDICULARIDAD DE RAYO.\nALINEACIÓN DE COLIMADOR CON BUKY MESA Y BUKY MURAL\nVERIFICAR NIVELES DE MESA Y BUKY MURAL.\nVERIFICACIÓN DE PARÁMETROS BÁSICOS DE FUNCIONAMIENTO (KVP, MA, T. EXPO)\nEXAMINAR CUIDADOSAMENTE EL CABLE DE ALTA TENSIÓN, LOS CONECTORES DE TARJETAS ELECTRÓNICAS, FUENTES DE PODER Y HAND SWICH.\nVERIFICAR LA LÍNEA DE ALIMENTACIÓN Y LA TIERRA.\nVERIFICAR LOS VALORES DE LA FUENTE DE VOLTAJE (AC Y DC)\n', 'CAMBIO DE LAMPARA LED DE COLIMADOR', '1', 'NA', 'LAMPARA LED 6V 50W', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(53, 2, 1, 'NA', 3, '2022-10-24', '09:00:00', '2022-10-24', '11:00:00', 6, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar estado de monitores, CPU, accesorios del equipo\nVerificación del estado de lámparas de borrado\nLimpieza de colector de imagen\nLimpieza lubricación de transporte de cassettes\nLimpieza de modulo óptico\nVerificación de fuentes de voltaje\nLimpieza verificación mecánica de cassettes y pantallas\nLimpieza de CPU, monitor teclado u ups\nLimpieza rodillos\nLimpieza y lubricación de tornillos sin fin\nPruebas de homogeneidad de imagen \nTes de resolución de imagen\n', 'NA', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(54, 1, 1, 'NA', 3, '2022-10-25', '08:00:00', '2022-10-25', '12:00:00', 4, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar y ajustar los, soporte de tubo, tensor de contrapeso, rotación de gantry, desplazamiento y compresión de mama.\nVerificar deslizamiento de regilla de buky\nVerificar y ajustar la medición de altura de paleta de compresión\nVerificar y ajustar la medición de fuerza de compresión\nVerificar y ajustar la medición de la angulación de gantry\nVerificar el funcionamiento de pedales de compresión\n Verificar detector de chasis y chasis de magnificación \nVerificar el funcionamiento de filtros\n Comprobar que el localizador del haz de luz del colimador está operado tanto con el panel de control como', 'MANTENER CONSTANTE EL AIRE ACONDICIONADO ', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(55, 8, 1, 'NA', 3, '2022-10-25', '14:00:00', '2022-10-25', '16:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'ALINEAR EL CAMPO DE LUZ DEL COLIMADOR CON EL CAMPO DE RADIACIÓN\nTEST DE COLIMACIÓN Y CAMPO DE RADIACIÓN.\nVERIFICACIÓN DE PERPENDICULARIDAD DE RAYO.\nALINEACIÓN DE COLIMADOR CON BUKY MESA Y BUKY MURAL\nVERIFICAR NIVELES DE MESA Y BUKY MURAL.\nVERIFICACIÓN DE PARÁMETROS BÁSICOS DE FUNCIONAMIENTO (KVP, MA, T. EXPO)\nEXAMINAR CUIDADOSAMENTE EL CABLE DE ALTA TENSIÓN, LOS CONECTORES DE TARJETAS ELECTRÓNICAS, FUENTES DE PODER Y HAND SWICH.\nVERIFICAR LA LÍNEA DE ALIMENTACIÓN Y LA TIERRA.\nVERIFICAR LOS VALORES DE LA FUENTE DE VOLTAJE (AC Y DC)\n', 'MANENER ENCENDIDO EL AIRE ACONDICIONADO ENTRE 18 Y 24 GRADOS', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(56, 19, 1, 'NA', 3, '2022-11-04', '10:00:00', '2022-11-04', '14:00:00', 3, 'MANTENIMIENTO PROGRAMADO', 'SE EVIDENCIA PRESENCIA DE OXIDACION EN LAS TAPAS DE GENERADOR COLUMNA Y MESA', 9, 'NA', 'ALINEAR EL CAMPO DE LUZ DEL COLIMADOR CON EL CAMPO DE RADIACIÓN\nTEST DE COLIMACIÓN Y CAMPO DE RADIACIÓN.\nVERIFICACIÓN DE PERPENDICULARIDAD DE RAYO.\nALINEACIÓN DE COLIMADOR CON BUKY MESA Y BUKY MURAL\n   VERIFICAR NIVELES DE MESA Y BUKY MURAL.\nVERIFICACIÓN DE PARÁMETROS BÁSICOS DE FUNCIONAMIENTO (KVP, MA, T. EXPO)\nEXAMINAR EL CABLE DE ALTA TENSIÓN, LOS CONECTORES DE TARJETAS ELECTRÓNICAS, FUENTES DE PODER Y HAND SWICH.\nVERIFICAR LA LÍNEA DE ALIMENTACIÓN Y LA TIERRA.\nVERIFICAR LOS VALORES DE LA FUENTE DE VOLTAJE (AC Y DC)\n', 'SE RECOMIENDA HACER PINTAR LAS TAPAS CON OXIDO', 'NA', 'MA', 'MN', 'NA', 'Si', 'PENDIENTE HACER PINTAR TAPAS Y CARCASAS', 1, 'FINALIZADO'),
+(57, 23, 1, 'NA', 3, '2022-11-05', '11:00:00', '2022-11-05', '17:00:00', 1, 'MANTENIMIENTO PREVENTIVO PROGRAMADO', 'SELECTOR DE KV MAYOR PRESENTA DESGASTE EN CONTACTOS', 9, 'NA', 'ALINEAR EL CAMPO DE LUZ DEL COLIMADOR CON EL CAMPO DE RADIACIÓN\nTEST DE COLIMACIÓN Y CAMPO DE RADIACIÓN.\nVERIFICACIÓN DE PERPENDICULARIDAD DE RAYO.\nALINEACIÓN DE COLIMADOR CON BUKY MESA Y BUKY MURAL\n   VERIFICAR NIVELES DE MESA Y BUKY MURAL.\nVERIFICACIÓN DE PARÁMETROS BÁSICOS DE FUNCIONAMIENTO (KVP, MA, T. EXPO)\nEXAMINAR EL CABLE DE ALTA TENSIÓN, LOS CONECTORES DE TARJETAS ELECTRÓNICAS, FUENTES DE PODER Y HAND SWICH.\nVERIFICAR LA LÍNEA DE ALIMENTACIÓN Y LA TIERRA.\nVERIFICAR LOS VALORES DE LA FUENTE DE VOLTAJE (AC Y DC)\n', 'SE RECOMIENDA MANTENER ENCENDIDO EL AIRE ACONDICINADO PARA EVITAR LA HUMEDAD EN EL AREA', '1', 'NA', 'SELECTOR DE KV MAYOR', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(58, 20, 6, 'NA', 3, '2022-11-05', '16:00:00', '2022-11-05', '17:00:00', 1, 'DESISTALACION DEL EQUIPO ', 'SE HACEN PRUEBA DE FUNCIONALIDAD Y SE ENCUENTRA OPERANDO NORMALMENTE DENTRO DE SUS PARAMETROS', 2, 'NA', 'SE DESCONECTA GENERADOR DE RX Y SE RETIRA DEL AREA DE SERVICIO\nSE DESCONECTA SOPORTE DE TUBO Y DEJA EL EQUIPO LISTO PARA RETIRO\n\n', 'EL EQUIPO ES RETIRADO DEL SERVICIO POR DECISION DEL PROPIETARIO DEBIDO A BAJA PRODUCTIVIDAD ', 'NA', 'NA', 'NA', 'NA', 'No', 'EQUIPO QUEDA EN BODEGA', 1, 'FINALIZADO'),
+(59, 4, 1, 'NA', 3, '2022-11-08', '09:00:00', '2022-11-08', '12:00:00', 2, 'MANTENIMIENTO PROGRAMADO', 'BUENO', 9, 'NA', 'Verificar y ajustar los frenos de rodamientos, soporte de tubo, tensor de contrapeso y soporte del colimador\nVerificar y ajustar las manijas de bloqueo y asegurarse que no estén sueltas y que cierren de forma manual.\nVerificar las posiciones del pedal\nVerificar funcionamiento de ruedas traseras y delanteras.\n Verificar el campo de luz con el campo de radiación\nCompruebe si el diafragma de doble ranura se puede girar ± 45 °.\nVerificar que el ajuste de formato (cuchillas) sea fácil y suave girando el colimador con perillas de ajuste.\nExaminar cuidadosamente el cable de poder, la clavija, los con', 'NA', 'NA', 'NA', 'NA', 'NA', 'Si', 'NA', 1, 'FINALIZADO'),
+(60, 3, 1, 'NA', 3, '2022-11-08', '15:00:00', '2022-11-08', '16:00:00', 2, 'MANTENIMIENTO PROGRAMADO', 'EL EQUIPO SE ENCUENTRA FUERA DE SERVICIO POR DISPOCISION DE SECRETARIA', 9, 'NA', 'SE HACE LIMPIEZA EXTERNA Y VERIFICACION DE RODAMINEROS Y CLAVIJA DE CABLE DE PODER', 'NO SE HACE VERIFICACION DE PARAMETROS YA QUE EL EQUIPO NO SE PUEDE INTERVENIR POR ENCONTRARSE SELLADO', 'NA', 'NA', 'NA', 'NA', 'No', 'EQUIPO CON SELLO DE SECRETARIA', 1, 'FINALIZADO'),
+(61, 34, 1, 'NA', 3, '2022-11-10', '12:00:00', '2022-11-10', '17:00:00', 1, 'MANTENIMIENTO PROGRAMADO', 'LUZ DE COLIMADOR NO ENCIENDE\nFRENOS DE MESA NO FUNCIONAN', 6, 'NA', 'Verificar y ajustar los frenos de rodamientos de la columna, soporte de tubo y colimador.\nVerificar el estado de las guayas de los tensores de contrapeso\nVerificar la apertura y cierre del colimador\nTest de colimación y campo de radiación.\nVerificación de perpendicularidad de rayo.\nAlineación de colimador con buky mesa y buky mural\nVerificar niveles de mesa y buky mural.\nVerificación de parámetros básicos de funcionamiento (kVp, mA, t. Expo)\n', 'SE HACE CAMBIO DE HALOGENO Y SE AJUSTA COLIMACION', '1', '1', 'HALOGENO 12 V 100W', 'PEDAL PARA ELECTROFRENOS', 'Si', 'PENDIENTE CAMBIO DE PEDAL DE FRENOS DE MESA', 1, 'FINALIZADO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sede`
+--
+
+CREATE TABLE `sede` (
+  `id_sede` int(11) NOT NULL,
+  `nombre_sede` varchar(45) NOT NULL,
+  `estatus_sede` varchar(30) NOT NULL DEFAULT 'ACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sede`
+--
+
+INSERT INTO `sede` (`id_sede`, `nombre_sede`, `estatus_sede`) VALUES
+(1, 'HMGY SOACHA', 'ACTIVO'),
+(2, 'HOSPITAL DE VICTORIA', 'ACTIVO'),
+(3, 'CLINICA BIENAVENTURANZA', 'ACTIVO'),
+(4, 'HOSPITAL SAN JOSE DE NEIRA', 'ACTIVO'),
+(5, 'PLENISALUD IPS', 'ACTIVO'),
+(6, 'HOSPITAL SAN BLAS', 'ACTIVO'),
+(7, 'HOSPITAL SANTA CLARA', 'ACTIVO'),
+(8, 'CLINICA OSPEDALE MANIZALES', 'ACTIVO'),
+(9, 'HOSPITAL MATERNO INFANTIL', 'ACTIVO'),
+(10, 'ESE HOSPITAL LOCAL LAZARO ALFONZO HERNÁNDEZ ', 'ACTIVO'),
+(11, 'JORGE ELIECER GAITAN', 'ACTIVO'),
+(12, 'VILLANUEVA', 'ACTIVO'),
+(13, 'MONTERREY', 'ACTIVO'),
+(14, 'PAZ DE ARIPORO', 'ACTIVO'),
+(15, 'TAURAMENA', 'ACTIVO'),
+(16, 'C.S CIUDAD LATINA', 'ACTIVO'),
+(17, 'C.E ODONTOLOGIA', 'ACTIVO'),
+(18, 'IPSPOLICLINICO CER', 'ACTIVO'),
+(19, 'HOSPITAL SAN ANTONIO GUATAVITA', 'ACTIVO'),
+(20, 'UNIDAD MEDICA CENTRAL IPS LTDA', 'ACTIVO'),
+(21, 'HOSPITAL DEPARTAMENTAL SAN RAFAEL ESE DE ZARZ', 'ACTIVO'),
+(22, 'HOSPITAL AGUA DE DIOS', 'ACTIVO'),
+(23, 'CLINICA PEDIATRICA COLSANITAS', 'ACTIVO'),
+(24, 'CENTRO MEDICO EPS SANITAS', 'ACTIVO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitud`
+--
+
+CREATE TABLE `solicitud` (
+  `id_solicitud` int(11) NOT NULL,
+  `inventario` int(11) NOT NULL,
+  `fecha_hora` datetime NOT NULL DEFAULT current_timestamp(),
+  `tipo_sol` varchar(30) NOT NULL,
+  `prioridad_sol` varchar(30) NOT NULL DEFAULT 'ALTA',
+  `usuario_cli` varchar(50) NOT NULL,
+  `motivo_servicio` varchar(100) NOT NULL,
+  `estatus_sol` varchar(30) NOT NULL DEFAULT 'PENDIENTE'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `solicitud`
+--
+
+INSERT INTO `solicitud` (`id_solicitud`, `inventario`, `fecha_hora`, `tipo_sol`, `prioridad_sol`, `usuario_cli`, `motivo_servicio`, `estatus_sol`) VALUES
+(1, 9, '2022-02-25 19:45:49', 'Otro', 'ALTA', '', 'ALQUILER TEMPORAL POR CONTINGENCIA', 'FINALIZADO'),
+(2, 3, '2022-02-28 23:06:19', 'Matto Correctivo', 'ALTA', '', 'PRESENTA ERROR EN TECNICAS ALTAS', 'FINALIZADO'),
+(3, 6, '2022-03-23 13:42:55', 'Matto Correctivo', 'ALTA', '', 'DIAGNOSTICO', 'FINALIZADO'),
+(4, 6, '2022-03-23 13:42:55', 'Matto Correctivo', 'ALTA', '', 'DIAGNOSTICO', 'CANCELADO'),
+(5, 16, '2022-03-25 21:01:13', 'Diagnóstico', 'ALTA', 'Alejandra Ochoa', 'DIAGNOSTICO Y COSTOS DE ARREGLO', 'FINALIZADO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_asistencia`
+--
+
+CREATE TABLE `tipo_asistencia` (
+  `id_tipo_asistencia` int(11) NOT NULL,
+  `nombre_asistencia` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_asistencia`
+--
+
+INSERT INTO `tipo_asistencia` (`id_tipo_asistencia`, `nombre_asistencia`) VALUES
+(1, 'REMOTO'),
+(2, 'TELEFONO'),
+(3, 'PRESENCIAL');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_servicio`
+--
+
+CREATE TABLE `tipo_servicio` (
+  `id_tipo_servicio` int(11) NOT NULL,
+  `nombre_tipo_servicio` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipo_servicio`
+--
+
+INSERT INTO `tipo_servicio` (`id_tipo_servicio`, `nombre_tipo_servicio`) VALUES
+(1, 'MANTENIMIENTO PREVENTIVO'),
+(2, 'MANTENIMIENTO CORRECTIVO'),
+(3, 'MANTENIMIENTO PREDICTIVO'),
+(4, 'INSTALACIÓN'),
+(5, 'DIAGNÓSTICO'),
+(6, 'DESINSTALACIÓN'),
+(7, 'OTRO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_usuario`
+--
+
+CREATE TABLE `tipo_usuario` (
+  `id_tipo` int(11) NOT NULL,
+  `nombre_tipo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipo`, `nombre_tipo`) VALUES
+(1, 'Super Administrador'),
+(2, 'Administrador'),
+(3, 'Tecnico'),
+(4, 'Cliente');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellidos` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `identificacion` varchar(45) NOT NULL,
+  `telefono` varchar(45) NOT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `contrasena` varchar(45) NOT NULL,
+  `tipo_usu` int(11) NOT NULL,
+  `estatus_usu` varchar(30) NOT NULL DEFAULT 'ACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellidos`, `email`, `identificacion`, `telefono`, `direccion`, `contrasena`, `tipo_usu`, `estatus_usu`) VALUES
+(1, 'HENRY ', 'MEJIA ROSERO', 'hmtecbiomedica@gmail.com', '87712709', '3103816871', 'Carrera 28 # 41 - 24 Sur Barrio Ingles', 'H87712709', 1, 'ACTIVO'),
+(2, 'YULIAN', 'ARDILA MALDONADO', 'ardimal1991@hotmail.com', '1090440261', '3203267159', 'Carrera 12D # 22B - 88 Sur Barrio San Jose', 'Y1090440261', 1, 'ACTIVO'),
+(3, 'Yulian ', 'Ardila Maldonado', 'ardimal1991@hotmail.com', '12345678', '320326334', 'CALLE # 55B-38 ILARCO, BOGOTA D.C', '1234', 4, 'ACTIVO'),
+(4, 'Yulian ', 'Ardila Maldonado', 'ardimal1991@hotmail.com', '1453677669', '4534545', 'CALLE 115 # 55B-38 ILARCO, BOGOTA D.C', '1234', 3, 'ACTIVO');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `area`
+--
+ALTER TABLE `area`
+  ADD PRIMARY KEY (`id_area`);
+
+--
+-- Indices de la tabla `ciudad`
+--
+ALTER TABLE `ciudad`
+  ADD PRIMARY KEY (`id_ciudad`);
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id_cliente`),
+  ADD KEY `select_contacto_idx` (`nombre_contacto`);
+
+--
+-- Indices de la tabla `cronograma`
+--
+ALTER TABLE `cronograma`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `agendar_inventario_idx` (`inventario`);
+
+--
+-- Indices de la tabla `detalle_reporte`
+--
+ALTER TABLE `detalle_reporte`
+  ADD PRIMARY KEY (`id_detalle`),
+  ADD KEY `reporte_id_idx` (`reporte`);
+
+--
+-- Indices de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  ADD PRIMARY KEY (`id_equipo`);
+
+--
+-- Indices de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`id_inventario`),
+  ADD KEY `select_equipo_idx` (`equipo`),
+  ADD KEY `select_cliente_idx` (`cliente`),
+  ADD KEY `select_pais_idx` (`pais`),
+  ADD KEY `select_ciudad_idx` (`ciudad`),
+  ADD KEY `select_sede_idx` (`sede`),
+  ADD KEY `select_area_idx` (`area`);
+
+--
+-- Indices de la tabla `pais`
+--
+ALTER TABLE `pais`
+  ADD PRIMARY KEY (`id_pais`);
+
+--
+-- Indices de la tabla `problema_reportado`
+--
+ALTER TABLE `problema_reportado`
+  ADD PRIMARY KEY (`id_problema_reportado`);
+
+--
+-- Indices de la tabla `protocolo_matto`
+--
+ALTER TABLE `protocolo_matto`
+  ADD PRIMARY KEY (`id_protocolo_matto`);
+
+--
+-- Indices de la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  ADD PRIMARY KEY (`id_reporte`),
+  ADD KEY `select_tipo_servicio_idx` (`tipo_servicio`),
+  ADD KEY `select_asistencia_idx` (`tipo_asistencia`),
+  ADD KEY `select_problema_repot_idx` (`problemas_report`),
+  ADD KEY `select_inventario_equipo_idx` (`inventario`),
+  ADD KEY `select_usuario_tecnico_idx` (`tecnico_usuario`);
+
+--
+-- Indices de la tabla `sede`
+--
+ALTER TABLE `sede`
+  ADD PRIMARY KEY (`id_sede`);
+
+--
+-- Indices de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD PRIMARY KEY (`id_solicitud`),
+  ADD KEY `inventario_id_idx` (`inventario`);
+
+--
+-- Indices de la tabla `tipo_asistencia`
+--
+ALTER TABLE `tipo_asistencia`
+  ADD PRIMARY KEY (`id_tipo_asistencia`);
+
+--
+-- Indices de la tabla `tipo_servicio`
+--
+ALTER TABLE `tipo_servicio`
+  ADD PRIMARY KEY (`id_tipo_servicio`);
+
+--
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`id_tipo`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `tipo_usuario_idx` (`tipo_usu`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `area`
+--
+ALTER TABLE `area`
+  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `ciudad`
+--
+ALTER TABLE `ciudad`
+  MODIFY `id_ciudad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `cronograma`
+--
+ALTER TABLE `cronograma`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_reporte`
+--
+ALTER TABLE `detalle_reporte`
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT de la tabla `pais`
+--
+ALTER TABLE `pais`
+  MODIFY `id_pais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `problema_reportado`
+--
+ALTER TABLE `problema_reportado`
+  MODIFY `id_problema_reportado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `protocolo_matto`
+--
+ALTER TABLE `protocolo_matto`
+  MODIFY `id_protocolo_matto` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
+-- AUTO_INCREMENT de la tabla `sede`
+--
+ALTER TABLE `sede`
+  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_asistencia`
+--
+ALTER TABLE `tipo_asistencia`
+  MODIFY `id_tipo_asistencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_servicio`
+--
+ALTER TABLE `tipo_servicio`
+  MODIFY `id_tipo_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cronograma`
+--
+ALTER TABLE `cronograma`
+  ADD CONSTRAINT `agendar_inventario` FOREIGN KEY (`inventario`) REFERENCES `inventario` (`id_inventario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `detalle_reporte`
+--
+ALTER TABLE `detalle_reporte`
+  ADD CONSTRAINT `reporte_id` FOREIGN KEY (`reporte`) REFERENCES `reporte` (`id_reporte`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD CONSTRAINT `select_area` FOREIGN KEY (`area`) REFERENCES `area` (`id_area`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_ciudad` FOREIGN KEY (`ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_cliente` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_equipo` FOREIGN KEY (`equipo`) REFERENCES `equipo` (`id_equipo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_pais` FOREIGN KEY (`pais`) REFERENCES `pais` (`id_pais`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_sede` FOREIGN KEY (`sede`) REFERENCES `sede` (`id_sede`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  ADD CONSTRAINT `select_asistencia` FOREIGN KEY (`tipo_asistencia`) REFERENCES `tipo_asistencia` (`id_tipo_asistencia`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_inventario_equipo` FOREIGN KEY (`inventario`) REFERENCES `inventario` (`id_inventario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_problema_repot` FOREIGN KEY (`problemas_report`) REFERENCES `problema_reportado` (`id_problema_reportado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_tipo_servicio` FOREIGN KEY (`tipo_servicio`) REFERENCES `tipo_servicio` (`id_tipo_servicio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `select_usuario_tecnico` FOREIGN KEY (`tecnico_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD CONSTRAINT `inventario_id` FOREIGN KEY (`inventario`) REFERENCES `inventario` (`id_inventario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `tipo_usuario` FOREIGN KEY (`tipo_usu`) REFERENCES `tipo_usuario` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
